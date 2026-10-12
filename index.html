@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,18 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#080b14">
   <title>Aether AI — Your AI Assistant</title>
-  <meta name="description" content="Meet Aether AI, your next-generation AI assistant.">
+  <meta name="description" content="Meet Aether AI, your AI assistant.">
+
   <style>
     :root {
       color-scheme: dark;
       --bg: #080b14;
       --panel: #0e1320;
-      --panel2: #131a2a;
       --text: #edf2ff;
       --muted: #8e9ab3;
       --cyan: #65e7ff;
       --purple: #a78bfa;
-      --border: rgba(155, 180, 230, .13);
+      --border: rgba(155, 180, 230, .15);
     }
 
     * { box-sizing: border-box; }
@@ -30,7 +30,7 @@
         radial-gradient(ellipse at 100% 100%, #241640 0, transparent 35%),
         var(--bg);
       color: var(--text);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
     }
 
     button, textarea { font: inherit; }
@@ -51,12 +51,16 @@
       align-items: center;
       gap: 12px;
       padding: 15px 5%;
-      background: rgba(8, 11, 20, .82);
+      background: rgba(8, 11, 20, .88);
       border-bottom: 1px solid var(--border);
       backdrop-filter: blur(18px);
     }
 
-    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
     .logo {
       width: 43px;
@@ -71,9 +75,19 @@
       box-shadow: 0 0 25px rgba(101, 231, 255, .18);
     }
 
-    .brand-name { font-size: 18px; font-weight: 800; letter-spacing: -.5px; }
+    .brand-name {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -.5px;
+    }
+
     .brand-name span { color: var(--cyan); }
-    .brand-sub { margin-top: 3px; font-size: 11px; color: var(--muted); }
+
+    .brand-sub {
+      margin-top: 3px;
+      font-size: 11px;
+      color: var(--muted);
+    }
 
     .status {
       display: flex;
@@ -90,7 +104,7 @@
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: #f3c969;
+      background: #65e7a4;
     }
 
     main {
@@ -100,7 +114,10 @@
       padding: 42px 22px 180px;
     }
 
-    .welcome { text-align: center; padding: 28px 0 25px; }
+    .welcome {
+      text-align: center;
+      padding: 28px 0 25px;
+    }
 
     .orb {
       width: 82px;
@@ -111,7 +128,11 @@
       border-radius: 27px;
       font-size: 39px;
       color: var(--cyan);
-      background: linear-gradient(145deg, rgba(101,231,255,.13), rgba(167,139,250,.15));
+      background: linear-gradient(
+        145deg,
+        rgba(101,231,255,.13),
+        rgba(167,139,250,.15)
+      );
       border: 1px solid rgba(101,231,255,.25);
       box-shadow: 0 0 60px rgba(101,231,255,.09);
     }
@@ -183,13 +204,37 @@
       background: #151f32;
     }
 
-    .prompt-icon { display: block; margin-bottom: 11px; font-size: 20px; }
-    .prompt strong { display: block; font-size: 13px; }
-    .prompt small { display: block; margin-top: 5px; color: var(--muted); font-size: 12px; }
+    .prompt-icon {
+      display: block;
+      margin-bottom: 11px;
+      font-size: 20px;
+    }
 
-    #chat { display: flex; flex-direction: column; gap: 23px; margin-top: 35px; }
+    .prompt strong {
+      display: block;
+      font-size: 13px;
+    }
 
-    .message { display: flex; align-items: flex-start; gap: 12px; }
+    .prompt small {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    #chat {
+      display: flex;
+      flex-direction: column;
+      gap: 23px;
+      margin-top: 35px;
+    }
+
+    .message {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
     .message.user { flex-direction: row-reverse; }
 
     .avatar {
@@ -210,7 +255,7 @@
     }
 
     .bubble {
-      max-width: min(680px, calc(100% - 50px));
+      max-width: min(680px, calc(100vw - 100px));
       padding: 14px 16px;
       border: 1px solid var(--border);
       border-radius: 4px 16px 16px 16px;
@@ -226,7 +271,12 @@
       background: #18243a;
     }
 
-    .message-actions { display: flex; gap: 8px; margin-top: 9px; }
+    .message-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 9px;
+    }
+
     .mini-btn {
       padding: 5px 9px;
       color: var(--muted);
@@ -235,7 +285,11 @@
       border-radius: 8px;
       font-size: 11px;
     }
-    .mini-btn:hover { color: var(--cyan); border-color: var(--cyan); }
+
+    .mini-btn:hover {
+      color: var(--cyan);
+      border-color: var(--cyan);
+    }
 
     .composer-wrap {
       position: fixed;
@@ -282,7 +336,11 @@
       padding-top: 7px;
     }
 
-    .composer-tools, .send-tools { display: flex; align-items: center; gap: 8px; }
+    .composer-tools, .send-tools {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
     .tool-btn {
       min-height: 37px;
@@ -294,8 +352,15 @@
       background: #151d2e;
     }
 
-    .tool-btn:hover { color: var(--cyan); border-color: rgba(101,231,255,.45); }
-    .tool-btn:disabled { opacity: .5; cursor: not-allowed; }
+    .tool-btn:hover {
+      color: var(--cyan);
+      border-color: rgba(101,231,255,.45);
+    }
+
+    .tool-btn:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+    }
 
     .send-btn {
       min-width: 42px;
@@ -348,10 +413,14 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="app">
     <header>
@@ -362,38 +431,48 @@
           <div class="brand-sub">A new way to think</div>
         </div>
       </div>
-      <div class="status"><span class="status-dot"></span><span id="statusText">Preview mode</span></div>
+
+      <div class="status">
+        <span class="status-dot"></span>
+        <span>AI assistant</span>
+      </div>
     </header>
 
     <main>
       <section class="welcome" id="welcome">
         <div class="orb" aria-hidden="true">✳</div>
         <h1>Think bigger.<br><span>Build anything.</span></h1>
+
         <p class="intro">
           Your space to explore ideas, learn new things, and turn
           imagination into reality.
         </p>
-        <div class="preview">✦ Interface preview · AI connection coming next</div>
+
+        <div class="preview">✦ Powered by Gemini AI</div>
       </section>
 
       <section id="suggestions">
         <div class="section-label">What shall we explore?</div>
+
         <div class="prompts">
           <button class="prompt" data-prompt="Teach me Python programming from the beginning.">
             <span class="prompt-icon">⌘</span>
             <strong>Learn to code</strong>
             <small>Start your programming journey</small>
           </button>
+
           <button class="prompt" data-prompt="Help me brainstorm an amazing website idea.">
             <span class="prompt-icon">✧</span>
             <strong>Create something</strong>
             <small>Turn an idea into a project</small>
           </button>
+
           <button class="prompt" data-prompt="Explain artificial intelligence in simple words.">
             <span class="prompt-icon">◈</span>
             <strong>Explore AI</strong>
             <small>Understand how AI works</small>
           </button>
+
           <button class="prompt" data-prompt="Give me a useful fact and explain why it matters.">
             <span class="prompt-icon">◎</span>
             <strong>Discover something</strong>
@@ -407,20 +486,46 @@
 
     <div class="composer-wrap">
       <form class="composer" id="chatForm">
-        <textarea id="input" rows="1" maxlength="4000"
+        <textarea
+          id="input"
+          rows="1"
+          maxlength="4000"
           placeholder="Message Aether AI..."
-          aria-label="Write your message"></textarea>
+          aria-label="Write your message"
+        ></textarea>
+
         <div class="composer-bottom">
           <div class="composer-tools">
-            <button class="tool-btn" type="button" id="micBtn" title="Use voice input" aria-label="Use voice input">🎙</button>
-            <button class="tool-btn" type="button" id="voiceBtn" title="Toggle spoken replies">🔊 Voice on</button>
+            <button
+              class="tool-btn"
+              type="button"
+              id="micBtn"
+              title="Use voice input"
+              aria-label="Use voice input"
+            >🎙</button>
+
+            <button
+              class="tool-btn"
+              type="button"
+              id="voiceBtn"
+              title="Toggle spoken replies"
+            >🔊 Voice on</button>
           </div>
+
           <div class="send-tools">
-            <button class="send-btn" type="submit" id="sendBtn" aria-label="Send message">↑</button>
+            <button
+              class="send-btn"
+              type="submit"
+              id="sendBtn"
+              aria-label="Send message"
+            >↑</button>
           </div>
         </div>
       </form>
-      <div class="footer-note">Aether AI preview · Don't enter private or sensitive information.</div>
+
+      <div class="footer-note">
+        Aether AI · Don't enter private or sensitive information.
+      </div>
     </div>
   </div>
 
@@ -440,12 +545,38 @@
     let voiceEnabled = true;
     let recognition = null;
     let toastTimeout;
+    let conversationHistory = [];
 
     function showToast(message) {
       toast.textContent = message;
       toast.classList.remove("hidden");
       clearTimeout(toastTimeout);
-      toastTimeout = setTimeout(() => toast.classList.add("hidden"), 3200);
+      toastTimeout = setTimeout(() => {
+        toast.classList.add("hidden");
+      }, 3500);
+    }
+
+    function speakText(text) {
+      if (!("speechSynthesis" in window)) {
+        showToast("Spoken replies are not supported in this browser.");
+        return;
+      }
+
+      window.speechSynthesis.cancel();
+
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 1;
+      utterance.pitch = 1;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    async function copyText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast("Message copied.");
+      } catch {
+        showToast("Copy is unavailable in this browser.");
+      }
     }
 
     function addMessage(text, role) {
@@ -473,103 +604,112 @@
         copy.type = "button";
         copy.className = "mini-btn";
         copy.textContent = "Copy";
-        copy.addEventListener("click", async () => {
-          try {
-            await navigator.clipboard.writeText(text);
-            showToast("Message copied.");
-          } catch {
-            showToast("Copy isn't available in this browser.");
-          }
-        });
-        actions.appendChild(copy);
+        copy.addEventListener("click", () => copyText(bubble.textContent));
 
         const speak = document.createElement("button");
         speak.type = "button";
         speak.className = "mini-btn";
         speak.textContent = "Speak";
-        speak.addEventListener("click", () => speakText(text));
-        actions.appendChild(speak);
+        speak.addEventListener("click", () => speakText(bubble.textContent));
 
+        actions.append(copy, speak);
         content.appendChild(actions);
       }
 
       row.append(avatar, content);
       chat.appendChild(row);
+
       return bubble;
-    }
-
-    function speakText(text) {
-      if (!("speechSynthesis" in window)) {
-        showToast("Spoken replies aren't supported in this browser.");
-        return;
-      }
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 1;
-      utterance.pitch = 1;
-      window.speechSynthesis.speak(utterance);
-    }
-
-    function previewReply() {
-      return "The Aether AI interface is working! I'm not connected to an AI model yet, so I can't answer real questions at this stage. Our next step is to connect a secure AI API so I can generate actual answers.";
     }
 
     async function sendMessage(text) {
       const message = text.trim();
-      if (!message) return;
+
+      if (!message || sendBtn.disabled) return;
 
       welcome.classList.add("hidden");
       suggestions.classList.add("hidden");
 
       addMessage(message, "user");
+
       input.value = "";
       input.style.height = "auto";
       sendBtn.disabled = true;
       sendBtn.textContent = "…";
 
-      const replyBubble = addMessage("Preparing preview…", "assistant");
+      const replyBubble = addMessage("Aether is thinking…", "assistant");
 
-      // Temporary preview response. The real AI API will be connected later.
-      await new Promise(resolve => setTimeout(resolve, 450));
-      const reply = previewReply();
-      replyBubble.textContent = reply;
-
-      const row = replyBubble.closest(".message");
-      const content = row.lastElementChild;
-      const actions = document.createElement("div");
-      actions.className = "message-actions";
-
-      const copy = document.createElement("button");
-      copy.type = "button";
-      copy.className = "mini-btn";
-      copy.textContent = "Copy";
-      copy.addEventListener("click", async () => {
-        try {
-          await navigator.clipboard.writeText(reply);
-          showToast("Message copied.");
-        } catch {
-          showToast("Copy isn't available in this browser.");
-        }
+      conversationHistory.push({
+        role: "user",
+        content: message
       });
 
-      const speak = document.createElement("button");
-      speak.type = "button";
-      speak.className = "mini-btn";
-      speak.textContent = "Speak";
-      speak.addEventListener("click", () => speakText(reply));
+      try {
+        const response = await fetch("/.netlify/functions/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            messages: conversationHistory
+          })
+        });
 
-      actions.append(copy, speak);
-      content.appendChild(actions);
+        let data;
 
-      if (voiceEnabled) speakText(reply);
+        try {
+          data = await response.json();
+        } catch {
+          throw new Error(
+            "The server returned an invalid response. Check the Netlify deployment."
+          );
+        }
 
-      sendBtn.disabled = false;
-      sendBtn.textContent = "↑";
-      input.focus();
-      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+        if (!response.ok) {
+          throw new Error(
+            data.error || "The AI server could not answer. Please try again."
+          );
+        }
+
+        const reply =
+          typeof data.reply === "string" ? data.reply.trim() : "";
+
+        if (!reply) {
+          throw new Error("Aether received an empty reply.");
+        }
+
+        replyBubble.textContent = reply;
+
+        conversationHistory.push({
+          role: "assistant",
+          content: reply
+        });
+
+        if (voiceEnabled) {
+          speakText(reply);
+        }
+      } catch (error) {
+        replyBubble.textContent =
+          "Sorry, " +
+          (error.message || "Aether couldn't connect. Please try again.");
+
+        // Remove the failed user message from conversation history.
+        conversationHistory.pop();
+
+        showToast(error.message || "Could not connect to the AI server.");
+      } finally {
+        sendBtn.disabled = false;
+        sendBtn.textContent = "↑";
+        input.focus();
+
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: "smooth"
+        });
+      }
     }
 
-    form.addEventListener("submit", event => {
+    form.addEventListener("submit", (event) => {
       event.preventDefault();
       sendMessage(input.value);
     });
@@ -579,20 +719,23 @@
       input.style.height = Math.min(input.scrollHeight, 180) + "px";
     });
 
-    input.addEventListener("keydown", event => {
+    input.addEventListener("keydown", (event) => {
       if (event.key === "Enter" && !event.shiftKey) {
         event.preventDefault();
         form.requestSubmit();
       }
     });
 
-    document.querySelectorAll("[data-prompt]").forEach(button => {
-      button.addEventListener("click", () => sendMessage(button.dataset.prompt));
+    document.querySelectorAll("[data-prompt]").forEach((button) => {
+      button.addEventListener("click", () => {
+        sendMessage(button.dataset.prompt);
+      });
     });
 
     voiceBtn.addEventListener("click", () => {
       voiceEnabled = !voiceEnabled;
       voiceBtn.textContent = voiceEnabled ? "🔊 Voice on" : "🔇 Voice off";
+
       if (!voiceEnabled && "speechSynthesis" in window) {
         window.speechSynthesis.cancel();
       }
@@ -607,16 +750,19 @@
       recognition.interimResults = false;
       recognition.maxAlternatives = 1;
 
-      recognition.addEventListener("result", event => {
+      recognition.addEventListener("result", (event) => {
         input.value = event.results[0][0].transcript;
         input.dispatchEvent(new Event("input"));
         input.focus();
       });
 
-      recognition.addEventListener("error", event => {
-        showToast(event.error === "not-allowed"
-          ? "Please allow microphone access in your browser."
-          : "Voice input failed. You can type your message instead.");
+      recognition.addEventListener("error", (event) => {
+        showToast(
+          event.error === "not-allowed"
+            ? "Please allow microphone access in your browser."
+            : "Voice input failed. You can type your message instead."
+        );
+
         micBtn.textContent = "🎙";
       });
 
@@ -634,7 +780,9 @@
       });
     } else {
       micBtn.addEventListener("click", () => {
-        showToast("Voice input isn't supported here. Try a recent version of Chrome or Edge.");
+        showToast(
+          "Voice input isn't supported here. Try a recent version of Chrome or Edge."
+        );
       });
     }
 
@@ -644,4 +792,4 @@
   </script>
 </body>
 </html>
-
+```
