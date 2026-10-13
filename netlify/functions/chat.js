@@ -1,4 +1,3 @@
-```javascript
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
     return {
@@ -117,4 +116,3 @@ exports.handler = async (event) => {
     };
   }
 };
-```
